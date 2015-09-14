@@ -13,19 +13,6 @@ URL = 'http://api.yelp.com/v2/search/'
 
 
 def request(url, credentials, params={}):
-    """Prepares OAuth authentication and sends the request to the API.
-
-    Args:
-        host (str): The domain host of the API.
-        path (str): The path of the API after the domain.
-        url_params (dict): An optional set of query parameters in the request.
-
-    Returns:
-        dict: The JSON response from the request.
-
-    Raises:
-        urllib2.HTTPError: An error occurs from the HTTP request.
-    """
 
     # for some crazy reason, oauth lib requires strings instead of unicode
     c = stringed_dict(credentials)
@@ -58,23 +45,9 @@ def request(url, credentials, params={}):
 
 
 def search(term, location, credentials):
-    """Query the Search API by a search term and location.
-
-    Args:
-        term (str): The search term passed to the API.
-        location (str): The search location passed to the API.
-
-    Returns:
-        dict: The JSON response from the request.
-    """
     url_params = {
         'term': term.replace(' ', '+'),
         'location': location.replace(' ', '+'),
         # 'limit': SEARCH_LIMIT
     }
     return request(URL, credentials, params=url_params)
-
-
-if __name__ == '__main__':
-    # main()
-   print  Ssearch('restaurant', 'georgetown, dc', credentials)
