@@ -1,0 +1,4 @@
+oauth2==1.0
+httplib2==0.9
+lxml==3.3.4
+requests==2.2.1
