@@ -25,11 +25,10 @@ def json_to_dict(json_file_name):
 def dicts_to_csv(dicts, csv_file_name, append=False):
     if not os.path.isfile(csv_file_name):
         append = False
-    mode = 'ab' if append else 'wb'
-    with open(csv_file_name, mode) as f:
+    with open(csv_file_name, 'ab') as f:
         writer = csv.writer(f)
-        headers = dicts[0].keys()
         if not append:
+            headers = dicts[0].keys()
             writer.writerow(headers)
         rows = [row.values() for row in dicts]
 
